@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+:root{
+    --left-bg-color: rgba(87,84,236,0.7);
+    --right-bg-color: rgba(43,43,43,0.8);
+    --left-hover-color: rgba(87,84,236,1);
+    --right-hover-color: rgba(28,122,28, 1);
+    --hover-width: 75%;
+    --other-width: 25%;
+
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Roboto',
+    sans-serif;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+h1{
+    color: #fff;
+    font-size: 4rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap; /* used to prevent the text from wrapping   */
+}
+
+.btn{
+    border: 3px solid #fff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1rem;
+    padding:1.5rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+   text-decoration: none;
+   white-space: nowrap;
+   width: 15rem;
+   transition:.3s;
+}
+
+.split.left .btn:hover{
+    background-color: var(--left-hover-color);
+    border-color: var(--left-hover-color);
+}
+
+.split.right .btn:hover {
+    background-color: var(--right-hover-color);
+    border-color: var(--right-hover-color);
+}
+
+.container{
+    position: relative;
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+}
+
+.split{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.split.left{
+ left: 0;
+ background: url(ps.jpg);   
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+.split.right {
+    right: 0;
+    background: url(xbox.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.left::before{
+    content: '';
+    background-color: var(--left-bg-color);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.split.right::before {
+    content: '';
+    background-color: var(--right-bg-color);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.split.left, .split.left::before, .split.right,
+.split.right::before{
+    transition:all 1s ease-in-out ;
+}
+
+.hover-left .left{      /* This means when you over left,the split left should take 75% while the split right should take 25% */
+    width: var(--hover-width);
+}
+
+.hover-left .right{
+    width: var(--other-width);
+}
+
+.hover-right .left {
+    width: var(--other-width);
+}
+
+.hover-right .right {
+    width: var(--hover-width);
+}
+
+@media (max-width:800px) {
+h1 {
+    font-size: 2rem;
+ position: absolute;
+ top: 30%;
+}
+
+.btn{
+    width: 10rem;
+    padding: 1rem;
+}
+}
